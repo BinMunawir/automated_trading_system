@@ -1,5 +1,10 @@
 
 from candile import Candile
+from alphavantage import AlphaVantage
 
-candile = Candile()
-print(candile.toJSON())
+
+# candile = Candile()
+# print(candile.toJSON())
+
+# data = AlphaVantage().getData('AAPL', '2020-05-01', '2020-05-05', interval='1min')
+# print(len(data))
