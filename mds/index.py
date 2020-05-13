@@ -3,6 +3,7 @@ from candile import Candile
 from alphavantage import AlphaVantage
 from management import Management
 import time
+from time import sleep
 
 
 # t = time.time()
@@ -15,4 +16,4 @@ import time
 # data = AlphaVantage().getData('AAPL', '2020-05-01', '2020-05-05', interval='1min')
 # print(len(data))
 
-Management().historyData()
+Management().historyData(interval='1min')

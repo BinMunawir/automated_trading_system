@@ -6,7 +6,9 @@ import pathlib
 
 class Management:
     stocks = [
-        'AAPL'
+        'FB',
+        'V',
+        'F'
     ]
 
     def historyData(self, symbol=None, start=None, end=None, interval=None):
@@ -18,11 +20,12 @@ class Management:
 
     
     def writeCandilesToFile(self, symbol, candiles):
+        # print(symbol, candiles[0].date, candiles[0].close)
         data = []
         for c in candiles: 
             data.append(c.toJSON())
-        pathlib.Path('../data').mkdir(exist_ok=True)
-        f = open('../data/'+symbol+'.json', 'w')
+        pathlib.Path('/home/abm/MEGA/myprojects/ats/medium/data').mkdir(exist_ok=True)
+        f = open('/home/abm/MEGA/myprojects/ats/medium/data/'+symbol+'.json', 'w')
         f.write(json.dumps(data))
         f.close()
 
