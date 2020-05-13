@@ -21,12 +21,12 @@ public class Signal {
     }
 
     public void verifyRisk() {
-        if (this.takeProfit/this.stopLoss >= Risk.r) {
+        if (this.takeProfit / this.stopLoss >= Risk.r) {
             this.isRiskVerified = false;
             return;
         }
         double singleLoss = this.entryPrice - this.stopLoss;
-        double totalAcceptedLoss = Risk.risk/100 * Risk.capital;
+        double totalAcceptedLoss = Risk.risk / 100 * Risk.capital;
         if (singleLoss > totalAcceptedLoss) {
             this.isRiskVerified = false;
             return;
