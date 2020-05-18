@@ -1,4 +1,6 @@
-package rms;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class Signal {
     private String symbol;
@@ -56,6 +58,32 @@ public class Signal {
                 break;
             this.numOfShares--;
         }
+    }
+
+
+    public static Signal fromJSON(String text) {
+        JSONParser jsonParser = new JSONParser();
+        try {
+            JSONObject json = (JSONObject) jsonParser.parse(text);
+            return new Signal((String) json.get("symbol"), (String) json.get("type"), (String) json.get("strategy"), Integer.parseInt(json.get("probability").toString()), Double.parseDouble(json.get("entryPrice").toString()), Double.parseDouble(json.get("takeProfit").toString()), Double.parseDouble(json.get("stopLoss").toString()));
+        } catch (ParseException e) {
+//            e.printStackTrace();
+            return null;
+        }
+    }
+    public JSONObject toJSON() {
+
+        JSONObject json = new JSONObject();
+        json.put("symbol", this.symbol);
+        json.put("type", this.type);
+        json.put("strategy", this.strategy);
+        json.put("probability", this.probability);
+        json.put("numOfShares", this.numOfShares);
+        json.put("takeProfit", this.takeProfit);
+        json.put("entryPrice", this.entryPrice);
+        json.put("stopLoss", this.stopLoss);
+
+        return  json;
     }
 
     public String getSymbol() {

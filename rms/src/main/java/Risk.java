@@ -1,4 +1,4 @@
-package rms;
+
 
 public class Risk {
     public static double capital = 10000;
