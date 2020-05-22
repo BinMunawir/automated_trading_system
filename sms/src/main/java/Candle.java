@@ -7,14 +7,14 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Candle {
-    private int date;
+    private long date;
     private double high;
     private double open;
     private double close;
     private double low;
     private double volume;
 
-    public Candle(int date, double high, double open, double close, double low, double volume) {
+    public Candle(long date, double high, double open, double close, double low, double volume) {
         this.date = date;
         this.high = high;
         this.open = open;
@@ -26,7 +26,7 @@ public class Candle {
     public static Stream<Candle> listFromJSON(String data) throws ParseException {
         JSONArray jsonData = (JSONArray)new JSONParser().parse(data);
         return jsonData.stream().map(o -> {
-            int date = Integer.parseInt(((JSONObject)o).get("date").toString());
+            long date = Long.parseLong(((JSONObject)o).get("date").toString());
             double high = Double.parseDouble(((JSONObject)o).get("high").toString());
             double open = Double.parseDouble(((JSONObject)o).get("open").toString());
             double close = Double.parseDouble(((JSONObject)o).get("close").toString());
@@ -37,7 +37,7 @@ public class Candle {
     }
     public static Candle fromJSON(String data) throws ParseException {
         JSONObject jsonData = (JSONObject) new JSONParser().parse(data);
-        int date = Integer.parseInt(jsonData.get("date").toString());
+        long date = Long.parseLong(jsonData.get("date").toString());
         double high = Double.parseDouble(jsonData.get("high").toString());
         double open = Double.parseDouble(jsonData.get("open").toString());
         double close = Double.parseDouble(jsonData.get("close").toString());
@@ -46,7 +46,7 @@ public class Candle {
         return new Candle(date, high, open, close, low, volume);
     }
 
-    public int getDate() {
+    public long getDate() {
         return date;
     }
 
