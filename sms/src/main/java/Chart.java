@@ -85,7 +85,7 @@ public class Chart {
             }
             return null;
         }).flatMap(watchEventStream -> watchEventStream).forEach(watchEvent -> {
-            try 
+            try {
                 System.out.println("data processed");
                 File file = new File(responseDir.toString() + "/" + watchEvent.context().toString());
                 String data = Files.readString(file.toPath());
@@ -108,5 +108,9 @@ public class Chart {
 
     public long getEnd() {
         return end;
+    }
+
+    public List<Candle> getCandleList() {
+        return candleList;
     }
 }
