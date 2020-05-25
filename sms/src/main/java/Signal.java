@@ -23,7 +23,7 @@ public class Signal {
         this.stopLoss = stopLoss;
     }
 
-    public String toJSONString() {
+    public String toJSON() {
         JSONObject json = new JSONObject();
         json.put("symbol", this.symbol);
         json.put("createdAt", this.createdAt);
