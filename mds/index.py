@@ -16,4 +16,4 @@ from time import sleep
 # data = AlphaVantage().getData('AAPL', '2020-05-01', '2020-05-05', interval='1min')
 # print(len(data))
 
-Management().historyData(interval='1min')
+Management().receiveRequests()

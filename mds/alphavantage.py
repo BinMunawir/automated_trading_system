@@ -3,7 +3,7 @@ from candile import Candile
 
 
 class AlphaVantage:
-    def getData(self, symbol, start=None, end=None, interval=None):
+    def getData(self, symbol, interval=None , start=None, end=None):
         ts = TimeSeries(key='TYBF948GTKE4QNN2')
 
         if(interval is None):
