@@ -38,7 +38,7 @@ public class Signal {
             return;
         }
 
-        double totalAcceptedLoss = Risk.capitalRiskPercentage / 100 * Risk.capital;
+        double totalAcceptedLoss = Risk.walletRiskPercentage / 100 * Risk.wallet;
         if (singleLoss > totalAcceptedLoss) {
             this.isRiskVerified = false;
             return;
@@ -49,15 +49,16 @@ public class Signal {
 
     public void calculatePositionSize() {
         double riskPerShare = this.entryPrice - this.stopLoss;
-        this.numOfShares = (int)(Risk.capitalRiskPercentage /100 * Risk.capital / riskPerShare);
+        this.numOfShares = (int)(Risk.walletRiskPercentage /100 * Risk.wallet / riskPerShare);
 
-        double maxAllowedSize = Risk.maxPositionSizeOfCapitalPercentage /100 * Risk.capital;
+        double maxAllowedSize = Risk.maxPositionSizeOfWalletPercentage /100 * Risk.wallet;
         while (true) {
             double cost = numOfShares * this.entryPrice;
             if(cost <= maxAllowedSize && cost <= Risk.wallet)
                 break;
             this.numOfShares--;
         }
+        Risk.wallet-=(this.numOfShares*this.entryPrice);
     }
 
 
