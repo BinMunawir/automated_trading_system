@@ -6,9 +6,9 @@ import time
 from time import sleep
 
 
-# t = time.time()
-# t = time.time() - t
-# print(t)
+t = time.time()
+t = time.time() - t
+print(t)
 
 # candile = Candile()
 # print(candile.toJSON())
